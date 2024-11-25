@@ -14,9 +14,13 @@ def is_criticality_balanced(temperature, neutrons_emitted):
     - The product of temperature and neutrons emitted per second is less than 500000.
     """
 
-    if temperature > 800 and neutrons_emitted > 500:
+    product = temperature * neutrons_emitted
+
+    if temperature < 800 and neutrons_emitted > 500 and product < 500000:
         return True
-    elif temperature * neutrons_emitted < 500000:
+    elif product > 500000:
+        return False
+    else:
         return False
 
 
